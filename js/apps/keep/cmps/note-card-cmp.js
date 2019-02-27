@@ -5,7 +5,7 @@ export default {
                 <section class="note-card">
                         <h2>{{note.data.title}}</h2>
                         <div class="note-content">
-                            {{note.data.content}}
+                            {{note.data.txt}}
                         </div>
                         <note-card-tools :noteid="note.id"></note-card-tools>
                 </section>`,

@@ -14,14 +14,14 @@ function getNotes() {
     return gNotes
 }
 
-function createNote(type, title, content, url) {
+function createNote(type, title, txt, url) {
     let newNote = {
         id: utils.makeid(),
         type,
         color: DEFAULT_COLOR,
         data: {
             title: (title) ? title : null,
-            content,
+            txt: txt,
             url: (url) ? url : null
         }
     }

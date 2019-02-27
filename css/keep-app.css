@@ -4,7 +4,10 @@
 }
 
 .notes-add {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+    margin: 0 auto 20px auto;
 }
 
 .notes-add-input {
@@ -18,10 +21,13 @@
 }
 
 .note-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding: 2rem;
-    border: 1px solid #61daf5;
+    word-break: break-all;
+    border: 1px solid #666;
     border-radius: 3px;
-    display: inline-block;
     background: rgba(255, 255, 255, 0.03);
 }
 

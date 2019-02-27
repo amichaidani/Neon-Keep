@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         addNewNote(ev) {
-            console.log(ev);
+            notesService.createNote(ev.type, ev.title, ev.txt)
         },
         deleteNote(noteId) {
             notesService.deleteNote(noteId);
