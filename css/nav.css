@@ -3,6 +3,10 @@ nav li {
     font-style: normal;
     list-style: none;
     color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:50px;
 }
 
 nav a {
@@ -17,11 +21,15 @@ nav ul {
 }
 
 nav {
-    padding-right: 5px;
+    padding-right: 4px;
+}
+
+nav .btn-icon:before {
+    margin: 0;
 }
 
 .skew-wrapper {
-    width: 150px;
+    width: 70px;
     height: 50px;
     display: inline-block;
     transform: skew(-30deg);
@@ -37,7 +45,7 @@ nav {
 
 .pink-outline {
     box-sizing: border-box;
-    border: 2px solid #f873a3;
+    border: 1px solid #f873a3;
     color: #f873a3;
     transition: all 150ms ease-in-out;
 }

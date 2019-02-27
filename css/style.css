@@ -20,40 +20,9 @@ h2, h3, h4, h5, h6 {
     margin: 0 0 0.5rem 0;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
+/* Elements */
 
-.wrapper {
-    max-width: 1280px;
-    padding: 0 10px;
-    margin: 0 auto;
-}
-
-.box-center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-}
-
-.home {
-    height: 100%;
-}
-
-.lucky-cat {
-    margin-bottom: 2rem;
-}
-
-.home-text {
-    margin-bottom: 2rem;
-}
-
-.box-center {
-    padding: 2rem;
-    text-align: center;
+main {
 }
 
 header {
@@ -71,7 +40,59 @@ footer {
     font-size: 0.8em;
 }
 
-main {}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+input {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: none;
+    font-size: 1rem;
+    color: #fff;
+}
+
+input:focus {
+    outline-width: 1px;
+    outline-color: #fcb515;
+}
+
+button {
+    display: inline-flex;
+    align-items: stretch;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    text-transform: capitalize;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    margin-right: 0.5rem;
+}
+
+button:focus {
+    outline: 0;
+}
+
+/* Layout */
+
+.wrapper {
+    max-width: 1280px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.box-center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
 
 .main-container {
     padding: 10px 0;
@@ -97,6 +118,26 @@ main {}
     height: 100%;
     opacity: 100;
     z-index: -999;
+}
+
+/* My elements */
+
+.home {
+    height: 100%;
+    transition-delay: 2s;
+}
+
+.lucky-cat {
+    margin-bottom: 2rem;
+}
+
+.home-text {
+    margin-bottom: 2rem;
+}
+
+.box-center {
+    padding: 2rem;
+    text-align: center;
 }
 
 .pink {
@@ -137,45 +178,8 @@ main {}
     max-width: 180px;
 }
 
-.flex {
-    display: flex;
-}
-
 .heading-bullet:before {
     content: '▰'
-}
-
-input {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1rem;
-    box-sizing: border-box;
-    border-radius: 3px;
-    border: none;
-    font-size: 1rem;
-    color: #fff;
-}
-
-input:focus {
-    outline-width: 1px;
-    outline-color: #fcb515;
-}
-
-button {
-    display: inline-flex;
-    align-items: stretch;
-    background: rgba(255, 255, 255, 0.05);
-    color: rgba(255, 255, 255, 0.8);
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    text-transform: capitalize;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 3px;
-    margin-right: 0.5rem;
-}
-
-button:focus {
-    outline: 0;
 }
 
 .glow-button:hover {
@@ -215,6 +219,12 @@ button:focus {
 
 .btn-trash:before {
     background-image: url('../img/trash.svg');
+}
+
+/* Helpers */
+
+.flex {
+    display: flex;
 }
 
 /* Animations */

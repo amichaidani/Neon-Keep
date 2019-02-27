@@ -7,10 +7,9 @@ export default {
                                 <img src="img/lucky-cat-toy.svg" class="lucky-cat">
                             </div>
                             <div class="home-text">
-                                If you can get along with japanese,<br>then i did a good job.
+                                Let's see if i did a good job.
                                 <br>
-                                <br>
-                                Good luck figuring it all out!
+                                Good luck figuring out japanese!
                             </div>
                             <router-link to="/keep">
                                 <button class="ripple glow-button btn-icon btn-mail">電子メール</button>
