@@ -44,7 +44,9 @@
             </header>
             <main class="my-fade-in">
                 <div class="main-container">
-                    <router-view></router-view>
+                    <transition name="fade">
+                        <router-view></router-view>
+                    </transition>
                 </div>
             </main>
             <footer class="my-fade-in">
