@@ -6,17 +6,15 @@ export default {
                             <div>
                                 <img src="img/lucky-cat-toy.svg" class="lucky-cat">
                             </div>
-                            <div>
+                            <div class="home-text">
                                 If you can get along with japanese,<br>then i did a good job.
                                 <br>
                                 <br>
                                 Good luck figuring it all out!
-                                <br>
-                                <br>
                             </div>
                             <router-link to="/keep">
-                                <button class="ripple glow-button">電子メール</button>
-                                <button class="ripple glow-button">キープ</button>
+                                <button class="ripple glow-button btn-icon btn-mail">電子メール</button>
+                                <button class="ripple glow-button btn-icon btn-keep">キープ</button>
                             </router-link>
                         </div>
                     </div>

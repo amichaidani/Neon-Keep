@@ -1,3 +1,13 @@
 .keep-app {
     height: 100%;
 }
+
+.note-card {
+    padding: 2rem;
+    border: 1px solid #61daf5;
+    border-radius: 3px;
+    display: inline-block;
+    min-width: 200px;
+    margin-right: 0.8rem;
+    background: rgba(255, 255, 255, 0.03);
+}
