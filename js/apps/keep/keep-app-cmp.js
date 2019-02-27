@@ -2,6 +2,9 @@ import notesService from './services/notes-service.js'
 import notesList from './cmps/notes-list-cmp.js';
 import notesAdd from './cmps/notes-add-cmp.js';
 
+import { eventBus, EVENT_NOTE_DELETE } from '../../event-bus.js';
+
+
 export default {
     template: `
                 <section class="keep-app">
@@ -14,12 +17,18 @@ export default {
             notes: []
         }
     },
-    methods:{
-        addNewNote(ev){
-            console.log(ev);   
+    methods: {
+        addNewNote(ev) {
+            console.log(ev);
+        },
+        deleteNote(noteId) {
+            notesService.deleteNote(noteId);
         }
     },
     created() {
+        eventBus.$on(EVENT_NOTE_DELETE, noteId => {
+            this.deleteNote(noteId)
+        });
         this.notes = notesService.getNotes();
     }
 }

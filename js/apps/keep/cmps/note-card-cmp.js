@@ -7,7 +7,7 @@ export default {
                         <div class="note-content">
                             {{note.data.content}}
                         </div>
-                        <note-card-tools></note-card-tools>
+                        <note-card-tools :noteid="note.id"></note-card-tools>
                 </section>`,
     props: ['note'],
     components: {

@@ -4,6 +4,7 @@ export default {
     gNotes,
     getNotes,
     createNote,
+    deleteNote,
 }
 
 var gNotes = [];
@@ -28,7 +29,10 @@ function createNote(type, title, content, url) {
     gNotes.push(newNote);
 }
 
-
+function deleteNote(noteId) {
+    let noteIdx = gNotes.findIndex(note => note.id === noteId);
+    gNotes.splice(noteIdx, 1);
+}
 
 // Create dummy data
 createNote('txt', 'Hello!', 'lala');
