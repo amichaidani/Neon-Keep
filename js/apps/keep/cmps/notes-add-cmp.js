@@ -18,7 +18,9 @@ export default {
     },
     methods: {
         onNoteAddInputChange() {
-            this.$emit('newNoteAdded', { type: 'txt', title: this.addNoteTitle, txt: this.addNoteTxt })
+            if (this.addNoteTxt !== '' || this.addNoteTitle !== '') {
+                this.$emit('newNoteAdded', { type: 'txt', title: this.addNoteTitle, txt: this.addNoteTxt })
+            };
             this.addNoteTxt = '';
             this.addNoteTitle = '';
         }
