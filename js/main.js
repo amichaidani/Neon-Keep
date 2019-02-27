@@ -26,6 +26,7 @@ new Vue({
     },
     watch: {
         $route(to, from) {
+            this.isSearchInputVisible = false;
             let pageTitleNew = to.meta.title;
             this.pageTitle = pageTitleNew;
             document.title = pageTitleNew;
