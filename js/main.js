@@ -9,12 +9,20 @@ new Vue({
     },
     data: {
         pageTitle: '',
-        isSearchablePage: false
+        isSearchablePage: false,
+        isSearchInputVisible: false
+    },
+    methods: {
+        onClickedSearch() {
+            this.isSearchInputVisible = !this.isSearchInputVisible;
+        }
     },
     computed: {
     },
     created() {
         this.pageTitle = this.$route.meta.title;
+        this.isSearchablePage = this.$route.meta.isSearchablePage;
+
     },
     watch: {
         $route(to, from) {

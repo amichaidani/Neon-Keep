@@ -29,7 +29,12 @@
                 <nav>
                     <ul>
                         <transition name="fade">
-                            <a href="#" v-if="isSearchablePage" class="skew-wrapper pink-outline">
+                            <a href="#" v-if="isSearchInputVisible && isSearchablePage" class="skew-wrapper pink-outline">
+                                <li class="unskew search-container">Global search goes here</li>
+                            </a>
+                        </transition>
+                        <transition name="fade">
+                            <a href="#" v-if="isSearchablePage"  @click="onClickedSearch" class="skew-wrapper pink-outline">
                                 <li class="unskew btn-icon btn-search"> </li>
                             </a>
                         </transition>
