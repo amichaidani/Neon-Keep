@@ -143,20 +143,21 @@ input {
 }
 
 input:focus {
-    outline: 0;
+    outline-width: 1px;
+    outline-color: #fcb515;
 }
 
 button {
     display: inline-flex;
     align-items: stretch;
     background: rgba(255, 255, 255, 0.05);
-    border: none;
     color: rgba(255, 255, 255, 0.8);
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
     text-transform: capitalize;
     cursor: pointer;
     border: 1px solid transparent;
+    border-radius: 3px;
     margin-right: 0.5rem;
 }
 
