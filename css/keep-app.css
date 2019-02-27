@@ -1,5 +1,14 @@
 .keep-app {
     height: 100%;
+    padding: 10px 0;
+}
+
+.notes-add {
+    margin-bottom: 20px;
+}
+
+.notes-add-input {
+    width: 100%;
 }
 
 .note-card {
