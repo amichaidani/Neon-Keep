@@ -28,6 +28,11 @@
                 </div> -->
                 <nav>
                     <ul>
+                        <transition name="fade">
+                            <a href="#" v-if="isSearchablePage" class="skew-wrapper pink-outline">
+                                <li class="unskew btn-icon btn-search"> </li>
+                            </a>
+                        </transition>
                         <router-link to="/mail" class="skew-wrapper pink-outline">
                             <li class="unskew btn-icon btn-mail"> </li>
                         </router-link>
@@ -39,7 +44,7 @@
             </header>
             <main class="my-fade-in">
                 <div class="main-container">
-                        <router-view></router-view>
+                    <router-view></router-view>
                 </div>
             </main>
             <footer class="my-fade-in">

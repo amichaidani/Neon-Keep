@@ -8,7 +8,8 @@ new Vue({
     components: {
     },
     data: {
-        pageTitle: ''
+        pageTitle: '',
+        isSearchablePage: false
     },
     computed: {
     },
@@ -20,6 +21,14 @@ new Vue({
             let pageTitleNew = to.meta.title;
             this.pageTitle = pageTitleNew;
             document.title = pageTitleNew;
+
+            if (to.meta.isSearchablePage === true) {
+                this.isSearchablePage = true;
+            }
+            else {
+                this.isSearchablePage = false;
+            }
+
         }
     }
 })

@@ -4,13 +4,13 @@ import mailApp from './apps/mail/mail-app-cmp.js';
 
 const routes = [
     {
-        path: '/', component: homeCmp, meta: { title: 'こんにちは' }
+        path: '/', component: homeCmp, meta: { title: 'こんにちは', isSearchablePage: false }
     },
     {
-        path: '/keep', component: keepApp, meta: { title: '守る' }
+        path: '/keep', component: keepApp, meta: { title: '守る', isSearchablePage: true }
     },
     {
-        path: '/mail', component: mailApp, meta: { title: '電子メール' }
+        path: '/mail', component: mailApp, meta: { title: '電子メール', isSearchablePage: true }
     }
 ]
 
