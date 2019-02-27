@@ -8,10 +8,10 @@ export default {
 }
 
 var gNotes = [];
-const DEFAULT_COLOR = 'transparent';
+const DEFAULT_COLOR = '#666';
 
 function getNotes() {
-    return gNotes
+    return Promise.resolve(gNotes)
 }
 
 function createNote(type, title, txt, url) {
@@ -27,11 +27,14 @@ function createNote(type, title, txt, url) {
     }
 
     gNotes.push(newNote);
+    return Promise.resolve(newNote);
 }
 
 function deleteNote(noteId) {
     let noteIdx = gNotes.findIndex(note => note.id === noteId);
     gNotes.splice(noteIdx, 1);
+
+    return Promise.resolve();
 }
 
 // Create dummy data

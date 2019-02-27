@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         addNewNote(ev) {
-            notesService.createNote(ev.type, ev.title, ev.txt)
+            notesService.createNote(ev.type, ev.title, ev.txt);
         },
         deleteNote(noteId) {
             notesService.deleteNote(noteId);
@@ -29,6 +29,6 @@ export default {
         eventBus.$on(EVENT_NOTE_DELETE, noteId => {
             this.deleteNote(noteId)
         });
-        this.notes = notesService.getNotes();
+        notesService.getNotes().then(res => this.notes = res);
     }
 }
