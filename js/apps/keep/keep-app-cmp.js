@@ -8,8 +8,8 @@ import { eventBus, EVENT_NOTE_DELETE } from '../../event-bus.js';
 export default {
     template: `
                 <section class="keep-app">
-                    <notes-add @newNoteAdded="addNewNote"></notes-add>
                     <notes-list :notes="notes"></notes-list>
+                    <notes-add @newNoteAdded="addNewNote"></notes-add>
                 </section>`,
     components: { notesList, notesAdd },
     data() {

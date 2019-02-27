@@ -3,10 +3,10 @@ export default {
     template: `
                 <section class="notes-add">
                     <transition name="fade">
-                        <input v-if="addIsFocused" type="text" class="notes-add-input"  placeholder="Title" 
+                        <input v-if="addIsFocused" type="text" class="notes-add-input glow-input"  placeholder="Title" 
                             v-model="addNoteTitle" @keyup.enter="onNoteAddInputChange">
                     </transition>
-                    <input type="text" class="notes-add-input"  placeholder="新しいメモを追加" 
+                    <input type="text" class="notes-add-input glow-input"  placeholder="新しいメモを追加" 
                         v-model="addNoteTxt" @focus="addIsFocused = true"  @keyup.enter="onNoteAddInputChange">
                 </section>`,
     data() {
