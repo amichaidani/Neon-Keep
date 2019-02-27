@@ -1,0 +1,234 @@
+@import url("keep-app.css");
+/* Using a url */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #1b1b1b;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+}
+
+/* Typography */
+
+h1 {
+    font-weight: bold;
+}
+
+.wrapper {
+    max-width: 1280px;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+
+.box-center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.home {
+    height: 100%;
+}
+
+.box-center {
+    padding: 2rem;
+    text-align: center;
+}
+
+header {
+    position: relative;
+    height: 80px;
+}
+
+footer {
+    position: relative;
+    height: 80px;
+    box-sizing: border-box;
+    color: #999;
+    font-size: 0.8em;
+}
+
+main {}
+
+.main-container {
+    padding: 10px 0;
+    height: calc(100vh - 160px);
+    box-sizing: border-box;
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 100;
+    z-index: -999;
+}
+
+.underline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 100;
+    z-index: -999;
+}
+
+.pink {
+    color: #f873a3;
+}
+
+.logo {
+    text-transform: capitalize;
+    transition: .6s;
+    transition-timing-function: ease-in-out;
+}
+
+.logo-dim {
+    font-size: 0.5em;
+    position: absolute;
+    top: -0.6em;
+    left: 0;
+    color: #666;
+}
+
+.logo-dim .heading-bullet {
+    display: none;
+}
+
+.lucky-cat {
+    max-width: 180px;
+}
+
+.flex {
+    display: flex;
+}
+
+.heading-bullet:before {
+    content: '▰'
+}
+
+button {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    text-transform: capitalize;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.glow-button:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0px 15px #f873a3;
+}
+
+/* Animations */
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to
+/* .fade-leave-active below version 2.1.8 */
+
+    {
+    opacity: 0;
+}
+
+.ripple {
+    background-position: center;
+    transition: background 0.6s;
+}
+
+.ripple:hover {
+    background: transparent radial-gradient(circle, transparent 1%, rgba(255, 255, 255, 0.05) 1%) center/15000%;
+}
+
+.ripple:active {
+    background-color: none;
+    background-size: 0%;
+    transition: background 0s;
+}
+
+@keyframes initLine {
+    from {
+        opacity: 0;
+        width: 5%;
+        border-bottom: 1px dashed #61daf5;
+    }
+    to {
+        opacity: 1;
+        width: 100%;
+        border-bottom: 1px solid #61daf5;
+    }
+}
+
+.init-line {
+    opacity: 0;
+    /* make things invisible upon start */
+    /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    animation: initLine ease-in-out 1;
+    /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    /* make things invisible upon start */
+    -webkit-animation: fadeIn ease-in 1;
+    /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+    -moz-animation: fadeIn ease-in 1;
+    animation: fadeIn ease-in 1;
+    -webkit-animation-fill-mode: forwards;
+    /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+    -moz-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    -webkit-animation-duration: .8s;
+    -moz-animation-duration: .8s;
+    animation-duration: .8s;
+}
+
+.fade-in.one {
+    -webkit-animation-delay: 0.7s;
+    -moz-animation-delay: 0.7s;
+    animation-delay: 0.7s;
+}
+
+.fade-in.two {
+    -webkit-animation-delay: 1.2s;
+    -moz-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+}
+
+.fade-in.three {
+    -webkit-animation-delay: 1.6s;
+    -moz-animation-delay: 1.6s;
+    animation-delay: 1.6s;
+}
+
+/* Misc */
+
+.lucky-cat {
+    margin-bottom: 2rem;
+}
