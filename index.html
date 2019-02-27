@@ -13,12 +13,12 @@
 <body>
     <div id="app">
         <div class="wrapper">
-            <header class="flex fade-in">
+            <header class="flex my-fade-in">
                 <div class="logo-container">
                     <div class="underline init-line"></div>
                     <div class="logo pink">
                         <h1>
-                            <router-link to="/"><span class="heading-bullet"></span></router-link><span>
+                            <router-link to="/" exact><span class="heading-bullet"></span></router-link><span>
                                 {{ pageTitle }}</span>
                         </h1>
                     </div>
@@ -37,14 +37,12 @@
                     </ul>
                 </nav>
             </header>
-            <main class="fade-in">
+            <main class="my-fade-in">
                 <div class="main-container">
-                    <transition name="fade">
                         <router-view></router-view>
-                    </transition>
                 </div>
             </main>
-            <footer class="fade-in">
+            <footer class="my-fade-in">
                 <div class="topline init-line"></div>
                 <!-- bla bla -->
             </footer>

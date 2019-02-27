@@ -11,8 +11,10 @@ export default {
                                 <br>
                                 Good luck figuring out japanese!
                             </div>
-                            <router-link to="/keep">
+                            <router-link to="/mail">
                                 <button class="ripple glow-button btn-icon btn-mail">電子メール</button>
+                            </router-link>
+                            <router-link to="/keep">
                                 <button class="ripple glow-button btn-icon btn-keep">キープ</button>
                             </router-link>
                         </div>
