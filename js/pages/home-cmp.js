@@ -15,8 +15,8 @@ export default {
                                 <br>
                             </div>
                             <router-link to="/keep">
-                                <button class="ripple glow-button">こちらをクリック
-                                </button>
+                                <button class="ripple glow-button">電子メール</button>
+                                <button class="ripple glow-button">キープ</button>
                             </router-link>
                         </div>
                     </div>

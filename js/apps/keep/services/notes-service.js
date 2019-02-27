@@ -13,18 +13,23 @@ function getNotes() {
     return gNotes
 }
 
-function createNote(type, content) {
+function createNote(type, title, content, url) {
     let newNote = {
         id: utils.makeid(),
         type,
-        content,
-        color: DEFAULT_COLOR
+        color: DEFAULT_COLOR,
+        data: {
+            title: (title) ? title : null,
+            content,
+            url: (url) ? url : null
+        }
     }
+
     gNotes.push(newNote);
 }
 
 
 
 // Create dummy data
-createNote('txt', 'lala');
-createNote('video', 'lala');
+createNote('txt', 'Hello!', 'lala');
+createNote('video', 'Yo', 'lala');
