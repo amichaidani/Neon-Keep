@@ -1,3 +1,5 @@
+import noteCardTools from './note-card-tools-cmp.js'
+
 export default {
     template: `
                 <section class="note-card">
@@ -5,8 +7,12 @@ export default {
                         <div class="note-content">
                             {{note.data.content}}
                         </div>
+                        <note-card-tools></note-card-tools>
                 </section>`,
     props: ['note'],
+    components: {
+        noteCardTools
+    },
     data() {
         return {
         }

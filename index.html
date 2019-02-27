@@ -20,9 +20,19 @@
                         <h1><span class="heading-bullet"></span><span> {{ pageTitle }}</span></h1>
                     </div>
                 </div>
-                <div class="header-search">
-                    <input type="text" placeholder="検索する..">
-                </div>
+                <!-- <div class="header-search">
+                    <input type="text" class="header-search-input" placeholder="検索する..">
+                </div> -->
+                <nav>
+                    <ul>
+                        <router-link to="/keep" class="skew-wrapper pink-outline">
+                            <li class="unskew">キープ</li>
+                        </router-link>
+                        <router-link to="/mail" class="skew-wrapper pink-outline">
+                            <li class="unskew">電子メール </li>
+                        </router-link>
+                    </ul>
+                </nav>
             </header>
             <main class="fade-in">
                 <div class="main-container">

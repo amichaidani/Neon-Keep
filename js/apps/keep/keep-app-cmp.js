@@ -5,13 +5,18 @@ import notesAdd from './cmps/notes-add-cmp.js';
 export default {
     template: `
                 <section class="keep-app">
-                    <notes-add></notes-add>
+                    <notes-add @newNoteAdded="addNewNote"></notes-add>
                     <notes-list :notes="notes"></notes-list>
                 </section>`,
     components: { notesList, notesAdd },
     data() {
         return {
             notes: []
+        }
+    },
+    methods:{
+        addNewNote(ev){
+            console.log(ev);   
         }
     },
     created() {

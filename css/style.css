@@ -1,4 +1,5 @@
-@import url("keep-app.css");
+@import url('keep-app.css');
+@import url('nav.css');
 /* Using a url */
 
 body {
@@ -102,6 +103,10 @@ main {}
     color: #f873a3;
 }
 
+.logo-container {
+    flex-basis: 300px;
+}
+
 .logo {
     text-transform: capitalize;
     transition: .6s;
@@ -118,6 +123,14 @@ main {}
 
 .logo-dim .heading-bullet {
     display: none;
+}
+
+.header-search {
+    flex-grow: 1;
+}
+
+.header-search-input {
+    width: 100%;
 }
 
 .lucky-cat {
@@ -180,12 +193,28 @@ button:focus {
     margin-right: 1em;
 }
 
+.btn-tool {
+    background: transparent;
+    padding: 0;
+}
+
+.btn-tool:before {
+    margin: 0;
+    background-size: 1.2em 1.2em;
+    width: 1.2em;
+    height: 1.2em;
+}
+
 .btn-mail:before {
     background-image: url('../img/mail.svg');
 }
 
 .btn-keep:before {
     background-image: url('../img/lightbulb.svg');
+}
+
+.btn-trash:before {
+    background-image: url('../img/trash.svg');
 }
 
 /* Animations */
