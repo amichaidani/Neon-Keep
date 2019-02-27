@@ -26,9 +26,14 @@ export default {
         }
     },
     created() {
+        notesService.getNotes().then(res => this.notes = res);
+
         eventBus.$on(EVENT_NOTE_DELETE, noteId => {
             this.deleteNote(noteId)
+            console.log('deleting ', noteId)
         });
-        notesService.getNotes().then(res => this.notes = res);
-    }
+    },
+    destroyed() {
+        eventBus.$off(EVENT_NOTE_DELETE)
+    },
 }

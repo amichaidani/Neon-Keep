@@ -6,6 +6,8 @@
 
 .notes-list {
     flex-grow: 2;
+    /* overflow-y: scroll; */
+
 }
 
 .notes-add {
