@@ -20,6 +20,7 @@
 .notes-grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding-right: 20px;
     grid-gap: 20px;
 }
 
