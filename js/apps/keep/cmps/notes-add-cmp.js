@@ -7,7 +7,7 @@ export default {
                             v-model="addNoteTitle" @keyup.enter="onNoteAddInputChange">
                     </transition>
                     <input type="text" class="notes-add-input glow-input"  placeholder="新しいメモを追加" 
-                        v-model="addNoteTxt" @focus="addIsFocused = true" @keyup="testUrl" @input="testUrl" @keyup.enter="onNoteAddInputChange">
+                        v-model="addNoteTxt" @focus="addIsFocused = true" @keyup="testUrl" @input="testUrl" @keyup.enter="onNoteAddInputEnter">
                         <transition name="fade">
                             <div class="add-note-img-preview" v-if="addNoteType === 'img'"><img :src="imgPreviewUrl"></div>
                         </transition>
@@ -18,11 +18,11 @@ export default {
             addNoteTitle: '',
             addNoteType: 'txt',
             addIsFocused: false,
-            imgPreviewUrl: ''
+            imgPreviewUrl: '//:0'
         }
     },
     methods: {
-        onNoteAddInputChange() {
+        onNoteAddInputEnter() {
             if (this.addNoteTxt !== '' || this.addNoteTitle !== '') {
                 this.$emit('newNoteAdded', { type: this.addNoteType, title: this.addNoteTitle, txt: this.addNoteTxt })
             };
