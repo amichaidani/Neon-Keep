@@ -4,7 +4,7 @@ export default {
                 <section class="notes-add">
                     <transition name="fade">
                         <input v-if="addIsFocused" type="text" class="notes-add-input input-title glow-input"  placeholder="タイトル" 
-                            v-model="addNoteTitle" @keyup.enter="onNoteAddInputChange">
+                            v-model="addNoteTitle" @keyup.enter="onNoteAddInputEnter">
                     </transition>
                     <input type="text" class="notes-add-input glow-input"  placeholder="新しいメモを追加" 
                         v-model="addNoteTxt" @focus="addIsFocused = true" @keyup="testUrl" @input="testUrl" @keyup.enter="onNoteAddInputEnter">
