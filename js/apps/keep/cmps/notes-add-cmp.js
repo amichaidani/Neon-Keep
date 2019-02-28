@@ -10,6 +10,7 @@ export default {
                         v-model="addNoteTxt" @focus="addIsFocused = true" @keyup="testUrl" @input="testUrl" @keyup.enter="onNoteAddInputEnter">
                         <transition name="fade">
                             <div class="add-note-img-preview" v-if="addNoteType === 'img'"><img :src="imgPreviewUrl"></div>
+                            <div class="add-note-video-preview" v-if="addNoteType === 'vid'">Video Preview</div>
                         </transition>
                 </section>`,
     data() {
@@ -31,13 +32,19 @@ export default {
             this.addNoteType = 'txt';
         },
         testUrl() {
-            let regexStr = '^https?://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|gif|png)$'
-            let imgUrl = new RegExp(regexStr, "i");
+            let regexImg = '^https?://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|gif|png)$'
+            let regexVid = '^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$'
+            let imgUrl = new RegExp(regexImg, "i");
+            let vidUrl = new RegExp(regexVid,"i");
 
             if (imgUrl.test(this.addNoteTxt)) {
                 this.imgPreviewUrl = this.addNoteTxt;
                 this.addNoteType = 'img';
-            }
+            } 
+            if (vidUrl.test(this.addNoteTxt)) {
+                // this.imgPreviewUrl = this.addNoteTxt;
+                this.addNoteType = 'vid';
+            } 
             else {
 
                 this.addNoteType = 'txt';
