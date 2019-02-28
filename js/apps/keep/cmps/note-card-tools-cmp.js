@@ -5,6 +5,7 @@ export default {
     template: `
                 <section class="note-card-tools">
                         <button class="btn-icon btn-tool btn-trash" title="削除する" @click="onDeleteNote(tools.delete)"></button>
+                        <input class="jscolor btn-jscolor" value="ab2567"> </span>
                 </section>`,
     props: ['noteid'],
     data() {
