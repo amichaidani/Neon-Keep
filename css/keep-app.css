@@ -1,7 +1,15 @@
 .keep-app {
     display: flex;
+    flex-direction: row;
     height: 100%;
     padding: 10px 0;
+}
+
+@media(max-width:540px) {
+    .keep-app {
+        flex-direction: column;
+        flex-flow: column-reverse;
+    }
 }
 
 .notes-list {
@@ -31,19 +39,50 @@
 }
 
 .notes-grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    padding-right: 20px;
-    grid-gap: 20px;
+    column-count: 4;
+    column-gap: 1em;
+}
+
+.masonry {
+    margin: 1.5em auto;
+    max-width: 768px;
+    column-gap: 1.5em;
+}
+
+/* Masonry on large screens */
+
+@media only screen and (min-width: 1024px) {
+    .notes-grid-container {
+        column-count: 4;
+        padding-right: 20px;
+    }
+}
+
+/* Masonry on medium-sized screens */
+
+@media (max-width: 768px) {
+    .notes-grid-container {
+        column-count: 3;
+    }
+}
+
+/* Masonry on small screens */
+
+@media (max-width: 540px) {
+    .notes-grid-container {
+        column-count: 2;
+    }
 }
 
 .note-card {
-    display: flex;
     flex-direction: column;
     justify-content: space-between;
     word-break: break-all;
     border: 1px solid #333;
     border-radius: 3px;
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
 }
 
 .note-card-text {
