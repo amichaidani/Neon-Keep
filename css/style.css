@@ -49,6 +49,10 @@ h2, h3, h4, h5, h6 {
 /* Elements */
 
 main {
+    height: calc(100vh - 160px);
+    margin: 10px 0;
+    padding: 10px 0;
+    box-sizing: border-box;
     overflow-y: scroll;
 }
 
@@ -125,12 +129,6 @@ button:focus {
     align-items: center;
     height: 100%;
     width: 100%;
-}
-
-.main-container {
-    padding: 10px 0;
-    height: calc(100vh - 160px);
-    box-sizing: border-box;
 }
 
 .underline {
@@ -216,7 +214,7 @@ button:focus {
 }
 
 .input-search {
-    width:100%;
+    width: 100%;
 }
 
 .lucky-cat {
