@@ -28,7 +28,7 @@ function createNote(type, title, txt, url) {
         }
     }
 
-    gNotes.push(newNote);
+    gNotes.unshift(newNote);
     return Promise.resolve(newNote);
 }
 
