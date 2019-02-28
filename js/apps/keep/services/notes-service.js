@@ -20,9 +20,9 @@ function createNote(type, title, txt, url) {
         type,
         color: DEFAULT_COLOR,
         data: {
-            title: (title) ? title : null,
+            title: (title) ? title : '',
             txt: txt,
-            url: (url) ? url : null
+            url: (url) ? url : ''
         }
     }
 

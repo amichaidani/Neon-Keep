@@ -34,27 +34,21 @@
 }
 
 .input-title {
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: 700;
     height: 1.5em;
 }
 
 .notes-grid-container {
-    column-count: 4;
+    column-count: 3;
     column-gap: 1em;
-}
-
-.masonry {
-    margin: 1.5em auto;
-    max-width: 768px;
-    column-gap: 1.5em;
 }
 
 /* Masonry on large screens */
 
 @media only screen and (min-width: 1024px) {
     .notes-grid-container {
-        column-count: 4;
+        column-count: 3;
         padding-right: 20px;
     }
 }

@@ -1,11 +1,12 @@
+import searchInput from './cmps/search-input-cmp.js';
 import myRoutes from './routes.js';
 const myRouter = new VueRouter({ routes: myRoutes });
-
 
 new Vue({
     el: '#app',
     router: myRouter,
     components: {
+        searchInput
     },
     data: {
         pageTitle: '',
