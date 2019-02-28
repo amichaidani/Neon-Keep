@@ -4,13 +4,13 @@ export default {
     template: `
                 <section class="note-card">
                         <div class="note-content">
-
-                            <div class="note-card-text" v-if="note.type === 'txt'"> 
-                                <h2>{{note.data.title}}</h2>    
+                            <img v-if="note.type === 'img'" class="note-card-img" :src="note.data.txt"> 
+                            <div class="note-card-text"> 
+                            <h2>{{note.data.title}}</h2>    
+                            <div  v-if="note.type === 'txt'">
                             {{note.data.txt}}
                             </div>
-                           <img v-if="note.type === 'img'" class="note-card-img" :src="note.data.txt"> 
-
+                        </div>
                         </div>
                         <note-card-tools :noteid="note.id"></note-card-tools>
                 </section>`,

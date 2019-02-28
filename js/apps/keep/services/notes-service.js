@@ -39,4 +39,5 @@ function deleteNote(noteId) {
 
 // Create dummy data
 createNote('txt', 'Hello!', 'lala');
-createNote('video', 'Yo', 'lala');
+createNote('txt', 'Yo', 'lala');
+createNote('img','','https://cdn-images-1.medium.com/max/1600/1*HP8l7LMMt7Sh5UoO1T-yLQ.png')
