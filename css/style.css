@@ -2,6 +2,34 @@
 @import url('nav.css');
 /* Using a url */
 
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius:50%;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #888;
+    cursor: pointer;
+
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     background: #1b1b1b;
@@ -22,7 +50,9 @@ h2, h3, h4, h5, h6 {
 
 /* Elements */
 
-main {}
+main {
+    overflow-y: scroll;
+}
 
 header {
     position: relative;
@@ -175,8 +205,7 @@ button:focus {
     display: none;
 }
 
-.search-container li {
-}
+.search-container li {}
 
 .lucky-cat {
     max-width: 180px;

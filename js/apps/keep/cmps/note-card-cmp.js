@@ -3,9 +3,14 @@ import noteCardTools from './note-card-tools-cmp.js'
 export default {
     template: `
                 <section class="note-card">
-                        <h2>{{note.data.title}}</h2>
                         <div class="note-content">
+
+                            <div class="note-card-text" v-if="note.type === 'txt'"> 
+                                <h2>{{note.data.title}}</h2>    
                             {{note.data.txt}}
+                            </div>
+                           <img v-if="note.type === 'img'" class="note-card-img" :src="note.data.txt"> 
+
                         </div>
                         <note-card-tools :noteid="note.id"></note-card-tools>
                 </section>`,
@@ -15,6 +20,10 @@ export default {
     },
     data() {
         return {
+        }
+    },
+    computed: {
+        noteContent() {
         }
     },
     created() {

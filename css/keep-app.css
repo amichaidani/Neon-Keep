@@ -14,8 +14,20 @@
     flex-direction: column;
 }
 
+.add-note-img-preview img {
+    position: absolute;
+    max-width: 300px;
+    bottom: 160px
+}
+
 .notes-add-input {
-    width: 100%;
+    display: flex;
+}
+
+.input-title {
+    font-size: 1.5em;
+    font-weight: 700;
+    height: 1.5em;
 }
 
 .notes-grid-container {
@@ -29,21 +41,34 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 1rem;
     word-break: break-all;
     border: 1px solid #333;
     border-radius: 3px;
 }
 
-.note-card-tools {
-    margin-top: 10px;
+.note-card-text {
+    padding: 1rem;
 }
 
-input.btn-jscolor {
-    height: 0.5em;
-    width: 0.5em;
+.note-card-img {
+    width: 100%;
+}
+
+.note-card-tools {
+    margin-top: 10px;
+    padding: 1rem;
+}
+
+.btn-jscolor {
+    height: 5px;
+    width: 5px;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.btn-jscolor:focus {
+    border: 0;
+    outline: 0;
 }
 
 .btn-jscolor {
@@ -51,4 +76,11 @@ input.btn-jscolor {
     width: 0.5em;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.color-value {
+    width: 19px;
+    height: 19px;
+    float: left;
+    display: block;
 }

@@ -5,19 +5,24 @@ export default {
     template: `
                 <section class="note-card-tools">
                         <button class="btn-icon btn-tool btn-trash" title="削除する" @click="onDeleteNote(tools.delete)"></button>
-                        <input class="jscolor btn-jscolor" value="ab2567"> </span>
+                        <input class="jscolor btn-jscolor" @change="onColorChange"> 
                 </section>`,
     props: ['noteid'],
     data() {
         return {
             tools: {
-                delete: 'delete'
+                delete: 'delete',
+  
             }
         }
     },
     methods: {
         onDeleteNote(tool) {
             eventBus.$emit(EVENT_NOTE_DELETE, this.noteid)
+        },
+        onColorChange(event){
+            console.log(event)
         }
     },
+
 }
