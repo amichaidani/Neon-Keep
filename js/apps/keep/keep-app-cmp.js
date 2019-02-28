@@ -31,8 +31,6 @@ export default {
             let filteredNotes = this.notes.filter(note => {
                 return (note.data.txt.toLowerCase().includes(this.filterTxt) || note.data.title.toLowerCase().includes(this.filterTxt));
             })
-            console.log(filteredNotes)
-
             return filteredNotes;
         }
     },

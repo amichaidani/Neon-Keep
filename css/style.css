@@ -215,6 +215,10 @@ button:focus {
     outline: none;
 }
 
+.input-search {
+    width: 400px;
+}
+
 .lucky-cat {
     max-width: 180px;
 }
