@@ -40,7 +40,7 @@ function deleteNote(noteId) {
 }
 
 // Create dummy data
-createNote('txt','To Do:','Finish CRUD / fix youtube preview / Pin')
+createNote('txt','To Do:','Finish CRUD / fix youtube preview / Pin / Color picker')
 createNote('txt', 'Hello!', 'lala');
 createNote('txt', 'Yo', 'lala');
 createNote('txt', 'Whats up?', 'This is a short text note');
