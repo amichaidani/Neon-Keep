@@ -17,7 +17,9 @@ function getNotes() {
 function createNote(type, title, txt, url) {
     let newNote = {
         id: utils.makeid(),
+        timestamp:Date.now(),
         type,
+        isPinned:false,
         color: DEFAULT_COLOR,
         data: {
             title: (title) ? title : '',
@@ -38,6 +40,7 @@ function deleteNote(noteId) {
 }
 
 // Create dummy data
+createNote('txt','To Do:','Finish CRUD / fix youtube preview / Pin')
 createNote('txt', 'Hello!', 'lala');
 createNote('txt', 'Yo', 'lala');
 createNote('txt', 'Whats up?', 'This is a short text note');
