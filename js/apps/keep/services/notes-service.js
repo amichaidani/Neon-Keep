@@ -57,5 +57,6 @@ function changeNoteColor(noteId, newColor) {
 createNote('img', '', 'https://s3.amazonaws.com/factmag-images/wp-content/uploads/2016/06/fractalfantasy2-6.24.2016.jpg')
 createNote('txt', 'To Do:', 'Finish CRUD / Pin / Color picker')
 createNote('txt', 'Yo', 'lala');
+createNote('vid', 'Wow :o', 'https://www.youtube.com/watch?v=a27te71Qh70')
 createNote('txt', 'Whats up?', 'This is a short text note');
 createNote('img', '', 'https://cdn-images-1.medium.com/max/1600/1*HP8l7LMMt7Sh5UoO1T-yLQ.png')
