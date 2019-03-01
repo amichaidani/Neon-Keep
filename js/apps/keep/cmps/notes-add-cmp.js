@@ -7,7 +7,7 @@ export default {
                             v-model="addNoteTitle" @keyup.enter="onNoteAddInputEnter">
                     </transition>
                     <input type="text" class="notes-add-input glow-input"  placeholder="+ 新しいメモを追加" 
-                        v-model="addNoteTxt" @focus="addIsFocused = true" @input="checkUrlType" @keyup.enter="onNoteAddInputEnter">
+                        v-model="addNoteTxt" @focus="addIsFocused = true" @blur="addIsFocused = false" @input="checkUrlType" @keyup.enter="onNoteAddInputEnter">
                     
                         <div class="add-note-img-preview" v-if="addNoteType === 'img'"><img :src="imgPreviewUrl"></div>
 

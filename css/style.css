@@ -48,6 +48,16 @@ h2, h3, h4, h5, h6 {
 
 /* Elements */
 
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    z-index: 1;
+}
+
 main {
     height: calc(100vh - 160px);
     box-sizing: border-box;
@@ -92,6 +102,7 @@ input {
     border: none;
     font-size: 1rem;
     color: #fff;
+    z-index: 5;
 }
 
 input:focus {
@@ -184,7 +195,11 @@ button:focus {
 }
 
 .logo-container {
-    flex-basis: 300px;
+    flex-grow: 0.5
+}
+
+@media (max-width:768px) {
+    .logo-container {}
 }
 
 .logo {
@@ -212,6 +227,7 @@ button:focus {
 }
 
 .search-container {
+    width: 100%;
     background: #272727;
     border-color: #fcb515;
     margin-right: 4px;
