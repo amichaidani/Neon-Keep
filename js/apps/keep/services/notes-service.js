@@ -47,6 +47,7 @@ function duplicateNote(noteId) {
 }
 
 // Create dummy data
+createNote('img', '', 'https://s3.amazonaws.com/factmag-images/wp-content/uploads/2016/06/fractalfantasy2-6.24.2016.jpg')
 createNote('txt', 'To Do:', 'Finish CRUD / fix youtube preview / Pin / Color picker')
 createNote('txt', 'Hello!', 'lala');
 createNote('txt', 'Yo', 'lala');

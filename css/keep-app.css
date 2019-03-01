@@ -3,10 +3,22 @@
     flex-direction: row;
 }
 
-@media(max-width:540px) {
+.notes-add {
+    padding: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+@media(max-width:768px) {
     .keep-app {
         flex-direction: column;
         flex-flow: column-reverse;
+    }
+    .notes-add {
+        margin-bottom: 20px;
     }
 }
 
@@ -15,13 +27,8 @@
     /* overflow-y: scroll; */
 }
 
-.notes-add {
-    padding: 0 10px;
-    display: flex;
-    flex-direction: column;
-}
-.add-note-img-preview{
-    padding:10px 0;
+.add-note-img-preview {
+    padding: 10px 0;
 }
 
 .add-note-img-preview img {
