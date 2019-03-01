@@ -78,6 +78,11 @@
     display: inline-block;
     margin: 0 0 1em;
     width: 100%;
+    transition: .3s;
+}
+
+.note-card:hover {
+    border: 1px solid #61daf5;
 }
 
 .note-card-text {
