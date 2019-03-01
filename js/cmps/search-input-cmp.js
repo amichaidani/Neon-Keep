@@ -5,7 +5,7 @@ export default {
     template: ` <div class="skew-wrapper pink-outline search-container glow-search-container">
     <li class="unskew">
         <input type="search" class="input-search" 
-            v-model="search" @input="onSearchKeyup" @blur="console.log('yay')">
+            v-model="search" ref="search" @input="onSearchKeyup">
     </li>
 </div>`,
     data() {

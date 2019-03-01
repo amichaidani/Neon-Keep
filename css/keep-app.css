@@ -1,7 +1,6 @@
 .keep-app {
     display: flex;
     flex-direction: row;
-    height: 100%;
 }
 
 @media(max-width:540px) {
@@ -21,11 +20,12 @@
     display: flex;
     flex-direction: column;
 }
+.add-note-img-preview{
+    padding:10px 0;
+}
 
 .add-note-img-preview img {
-    position: absolute;
-    max-width: 300px;
-    bottom: 160px
+    max-width: 100%;
 }
 
 .notes-add-input {

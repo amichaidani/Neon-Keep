@@ -80,6 +80,10 @@ a {
     background-color: #f873a3;
 }
 
+.router-link-active .btn-icon {
+    filter: invert(0.9);
+}
+
 input {
     background: #272727;
     padding: 1rem;
@@ -204,6 +208,7 @@ button:focus {
 .search-container {
     background: #272727;
     border-color: #fcb515;
+    margin-right: 4px;
 }
 
 .search-container:hover {
@@ -253,7 +258,8 @@ button:focus {
 .btn-tool {
     background: transparent;
     padding: 0;
-    filter: invert(0.6);
+    filter: invert(0.5);
+    margin: 0;
 }
 
 .btn-tool:hover {

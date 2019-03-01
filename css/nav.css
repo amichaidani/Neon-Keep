@@ -28,6 +28,10 @@ nav .btn-icon:before {
     margin: 0;
 }
 
+.skew-wrapper:hover .btn-icon {
+    filter: invert(1);
+}
+
 .skew-wrapper {
     padding: 0 10px;
     min-width: 70px;
@@ -37,6 +41,10 @@ nav .btn-icon:before {
     overflow: hidden;
     border-radius: 0px;
     box-sizing: border-box;
+}
+
+.skew-wrapper:first-child:hover {
+    margin-left: none;
 }
 
 .pink-filled {
