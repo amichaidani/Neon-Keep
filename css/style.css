@@ -205,6 +205,12 @@ button:focus {
     display: none;
 }
 
+@media(max-width:420px) {
+    .page-title {
+        display: none;
+    }
+}
+
 .search-container {
     background: #272727;
     border-color: #fcb515;
