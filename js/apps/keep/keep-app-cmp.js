@@ -2,7 +2,7 @@ import notesService from './services/notes-service.js'
 import notesList from './cmps/notes-list-cmp.js';
 import notesAdd from './cmps/notes-add-cmp.js';
 
-import { eventBus, EVENT_NOTE_DELETE, EVENT_NOTE_DUPLICATE, EVENT_SEARCH_INPUT} from '../../event-bus.js';
+import { eventBus, EVENT_NOTE_DELETE, EVENT_NOTE_DUPLICATE, EVENT_SEARCH_INPUT, EVENT_NOTE_COLOR } from '../../event-bus.js';
 
 
 export default {
@@ -22,11 +22,14 @@ export default {
         addNewNote(ev) {
             notesService.createNote(ev.type, ev.title, ev.txt);
         },
-        deleteNote(noteId) {
+        onDeleteNote(noteId) {
             notesService.deleteNote(noteId);
         },
-        duplicateNote(noteId) {
+        onDuplicateNote(noteId) {
             notesService.duplicateNote(noteId);
+        },
+        onChangeNoteColor(noteId, newColor) {
+            notesService.changeNoteColor(noteId, newColor);
         }
     },
     computed: {
@@ -45,15 +48,21 @@ export default {
         });
 
         eventBus.$on(EVENT_NOTE_DELETE, noteId => {
-            this.deleteNote(noteId);
+            this.onDeleteNote(noteId);
         });
 
         eventBus.$on(EVENT_NOTE_DUPLICATE, noteId => {
-            this.duplicateNote(noteId);
+            this.onDuplicateNote(noteId);
+        });
+
+        eventBus.$on(EVENT_NOTE_COLOR, ev => {
+            this.onChangeNoteColor(ev.id, ev.color);
         });
     },
     destroyed() {
         eventBus.$off(EVENT_NOTE_DELETE);
+        eventBus.$off(EVENT_NOTE_DUPLICATE);
+        eventBus.$off(EVENT_NOTE_COLOR);
         eventBus.$off(EVENT_SEARCH_INPUT);
     },
 }

@@ -3,7 +3,7 @@ import utils from '../../../utils.js';
 
 export default {
     template: `
-                <section class="note-card">
+                <section class="note-card" :style="{backgroundColor : note.color}">
                         <div class="note-content">
                             <div v-if="note.type === 'list'" class="note-card-list">List Goes Here</div>
                                 <div v-if="note.type === 'vid'" class="note-card-vid" >

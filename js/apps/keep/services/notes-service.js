@@ -5,11 +5,12 @@ export default {
     getNotes,
     createNote,
     deleteNote,
-    duplicateNote
+    duplicateNote,
+    changeNoteColor
 }
 
 var gNotes = [];
-const DEFAULT_COLOR = '#666';
+const DEFAULT_COLOR = 'transparent';
 
 function getNotes() {
     return Promise.resolve(gNotes)
@@ -46,9 +47,15 @@ function duplicateNote(noteId) {
     return Promise.resolve();
 }
 
+function changeNoteColor(noteId, newColor) {
+    let note = gNotes.find(note => note.id === noteId);
+    note.color = newColor;
+    return Promise.resolve();
+}
+
 // Create dummy data
 createNote('img', '', 'https://s3.amazonaws.com/factmag-images/wp-content/uploads/2016/06/fractalfantasy2-6.24.2016.jpg')
-createNote('txt', 'To Do:', 'Finish CRUD / fix youtube preview / Pin / Color picker')
+createNote('txt', 'To Do:', 'Finish CRUD / Pin / Color picker')
 createNote('txt', 'Yo', 'lala');
 createNote('txt', 'Whats up?', 'This is a short text note');
 createNote('img', '', 'https://cdn-images-1.medium.com/max/1600/1*HP8l7LMMt7Sh5UoO1T-yLQ.png')
