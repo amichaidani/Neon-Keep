@@ -14,8 +14,8 @@
     <div id="app">
         <div class="wrapper">
             <header class="flex my-fade-in">
+                <div class="underline init-line"></div>
                 <div class="logo-container">
-                    <div class="underline init-line"></div>
                     <div class="logo pink">
                         <h1>
                             <router-link to="/" exact><span class="heading-bullet"></span></router-link><span>
@@ -44,11 +44,11 @@
                 </nav>
             </header>
             <main class="my-fade-in">
-                    <transition name="fade">
-                        <keep-alive>
-                            <router-view></router-view>
-                        </keep-alive>
-                    </transition>
+                <transition name="fade">
+                    <keep-alive>
+                        <router-view></router-view>
+                    </keep-alive>
+                </transition>
             </main>
             <footer class="my-fade-in">
                 <div class="topline init-line"></div>

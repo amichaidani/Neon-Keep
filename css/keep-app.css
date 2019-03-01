@@ -82,6 +82,7 @@
 
 .note-card-text {
     padding: 1rem;
+    word-break: break-all;
 }
 
 .note-card-img {

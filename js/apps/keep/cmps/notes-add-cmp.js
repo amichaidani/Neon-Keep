@@ -7,7 +7,7 @@ export default {
                             v-model="addNoteTitle" @keyup.enter="onNoteAddInputEnter">
                     </transition>
                     <input type="text" class="notes-add-input glow-input"  placeholder="新しいメモを追加" 
-                        v-model="addNoteTxt" @focus="addIsFocused = true" @keyup="testUrl" @input="testUrl" @keyup.enter="onNoteAddInputEnter">
+                        v-model="addNoteTxt" @focus="addIsFocused = true"  @input="testUrl" @keyup.enter="onNoteAddInputEnter">
                         <transition name="fade">
                             <div class="add-note-img-preview" v-if="addNoteType === 'img'"><img :src="imgPreviewUrl"></div>
                             <div class="add-note-video-preview" v-if="addNoteType === 'vid'"></div>
@@ -19,7 +19,7 @@ export default {
             addNoteTitle: '',
             addNoteType: 'txt',
             addIsFocused: false,
-            imgPreviewUrl: '//:0'
+            imgPreviewUrl: ''
         }
     },
     methods: {
@@ -30,29 +30,26 @@ export default {
             this.addNoteTxt = '';
             this.addNoteTitle = '';
             this.addNoteType = 'txt';
+            this.imgPreviewUrl = '';
+
         },
         testUrl() {
             let regexImg = '^https?://(?:[a-z0-9\-]+\.)+[a-z]{2,6}(?:/[^/#?]+)+\.(?:jpg|gif|png)$';
             let regexVid = '^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+$';
-            let imgUrl = new RegExp(regexImg, "i");
-            let vidUrl = new RegExp(regexVid, "i");
-
+            let imgUrl = new RegExp(regexImg);
+            let vidUrl = new RegExp(regexVid);
             if (imgUrl.test(this.addNoteTxt)) {
-                this.imgPreviewUrl = this.addNoteTxt;
                 this.addNoteType = 'img';
-                return;
-            }
-            if (vidUrl.test(this.addNoteTxt)) {
-                // this.imgPreviewUrl = this.addNoteTxt;
+                this.imgPreviewUrl = this.addNoteTxt;
+            } else if (vidUrl.test(this.addNoteTxt)) {
                 this.addNoteType = 'vid';
+                this.imgPreviewUrl = this.addNoteTxt;
                 return;
             }
             else {
                 this.addNoteType = 'txt';
+                this.imgPreviewUrl = '';
             }
         }
-    },
-    updated() {
-        this.addNoteTxt = this.addNoteTxt;
     }
 }

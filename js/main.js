@@ -16,6 +16,7 @@ new Vue({
     methods: {
         onClickedSearch() {
             this.isSearchInputVisible = !this.isSearchInputVisible;
+            
         }
     },
     computed: {

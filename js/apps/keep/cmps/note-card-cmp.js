@@ -12,7 +12,7 @@ export default {
                             <img v-if="note.type === 'img'" class="note-card-img" :src="note.data.txt"> 
 
                             <div class="note-card-text"> 
-                            <h2>{{note.data.title}}</h2>    
+                            <h4 v-if="note.data.title !== ''">{{note.data.title}}</h4>    
                                 <div  v-if="note.type === 'txt'">
                                 {{note.data.txt}}
                                 </div>

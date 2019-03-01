@@ -2,7 +2,7 @@ import notesService from './services/notes-service.js'
 import notesList from './cmps/notes-list-cmp.js';
 import notesAdd from './cmps/notes-add-cmp.js';
 
-import { eventBus, EVENT_NOTE_DELETE, EVENT_SEARCH_INPUT } from '../../event-bus.js';
+import { eventBus, EVENT_NOTE_DELETE, EVENT_NOTE_DUPLICATE, EVENT_SEARCH_INPUT} from '../../event-bus.js';
 
 
 export default {
@@ -24,6 +24,9 @@ export default {
         },
         deleteNote(noteId) {
             notesService.deleteNote(noteId);
+        },
+        duplicateNote(noteId) {
+            notesService.duplicateNote(noteId);
         }
     },
     computed: {
@@ -37,16 +40,20 @@ export default {
     created() {
         notesService.getNotes().then(res => this.notes = res);
 
+        eventBus.$on(EVENT_SEARCH_INPUT, search => {
+            this.filterTxt = search;
+        });
+
         eventBus.$on(EVENT_NOTE_DELETE, noteId => {
             this.deleteNote(noteId);
         });
 
-        eventBus.$on(EVENT_SEARCH_INPUT, search => {
-            this.filterTxt = search;
+        eventBus.$on(EVENT_NOTE_DUPLICATE, noteId => {
+            this.duplicateNote(noteId);
         });
     },
     destroyed() {
-        eventBus.$off(EVENT_SEARCH_INPUT);
         eventBus.$off(EVENT_NOTE_DELETE);
+        eventBus.$off(EVENT_SEARCH_INPUT);
     },
 }

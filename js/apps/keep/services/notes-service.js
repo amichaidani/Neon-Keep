@@ -5,6 +5,7 @@ export default {
     getNotes,
     createNote,
     deleteNote,
+    duplicateNote
 }
 
 var gNotes = [];
@@ -17,9 +18,9 @@ function getNotes() {
 function createNote(type, title, txt, url) {
     let newNote = {
         id: utils.makeid(),
-        timestamp:Date.now(),
+        timestamp: Date.now(),
         type,
-        isPinned:false,
+        isPinned: false,
         color: DEFAULT_COLOR,
         data: {
             title: (title) ? title : '',
@@ -39,10 +40,16 @@ function deleteNote(noteId) {
     return Promise.resolve();
 }
 
+function duplicateNote(noteId) {
+    let note = gNotes.find(note => note.id === noteId);
+    createNote(note.type, note.data.title, note.data.txt);
+    return Promise.resolve();
+}
+
 // Create dummy data
-createNote('txt','To Do:','Finish CRUD / fix youtube preview / Pin / Color picker')
+createNote('txt', 'To Do:', 'Finish CRUD / fix youtube preview / Pin / Color picker')
 createNote('txt', 'Hello!', 'lala');
 createNote('txt', 'Yo', 'lala');
 createNote('txt', 'Whats up?', 'This is a short text note');
 createNote('vid', 'Coming soon', 'This is a short text note');
-createNote('img','','https://cdn-images-1.medium.com/max/1600/1*HP8l7LMMt7Sh5UoO1T-yLQ.png')
+createNote('img', '', 'https://cdn-images-1.medium.com/max/1600/1*HP8l7LMMt7Sh5UoO1T-yLQ.png')
