@@ -1,5 +1,6 @@
 export default {
-    makeid
+    makeid,
+    youtubeEmbedUrl
 }
 
 function makeid() {
@@ -10,4 +11,12 @@ function makeid() {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
+}
+
+function youtubeEmbedUrl(url) {
+    let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    let match = url.match(regExp);
+    if (match && match[2].length == 11) {
+        return `https://www.youtube.com/embed/${match[2]}?controls=0`;
+    }
 }

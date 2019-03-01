@@ -31,6 +31,14 @@
     padding: 10px 0;
 }
 
+.add-note-video-preview {
+    padding: 10px;
+}
+
+.add-note-video-preview iframe {
+    width: 100%;
+}
+
 .add-note-img-preview img {
     max-width: 100%;
 }
@@ -86,6 +94,7 @@
     margin: 0 0 1em;
     width: 100%;
     transition: .3s;
+    overflow: hidden;
 }
 
 .note-card:hover {
@@ -98,6 +107,10 @@
 }
 
 .note-card-img {
+    width: 100%;
+}
+
+.note-card iframe {
     width: 100%;
 }
 

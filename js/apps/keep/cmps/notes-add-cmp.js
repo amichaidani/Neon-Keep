@@ -1,4 +1,4 @@
-
+import utils from '../../../utils.js'
 export default {
     template: `
                 <section class="notes-add">
@@ -8,10 +8,11 @@ export default {
                     </transition>
                     <input type="text" class="notes-add-input glow-input"  placeholder="新しいメモを追加" 
                         v-model="addNoteTxt" @focus="addIsFocused = true" @input="checkUrlType" @keyup.enter="onNoteAddInputEnter">
-                        <transition name="fade">
-                            <div class="add-note-img-preview" v-if="addNoteType === 'img'"><img :src="imgPreviewUrl"></div>
-                            <div class="add-note-video-preview" v-if="addNoteType === 'vid'">VID</div>
-                        </transition>
+                    
+                        <div class="add-note-img-preview" v-if="addNoteType === 'img'"><img :src="imgPreviewUrl"></div>
+
+                    <div class="add-note-video-preview" v-if="addNoteType === 'vid'"><iframe width="560" height="315" :src="youtubeEmbedUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                            
                 </section>`,
     data() {
         return {
@@ -34,18 +35,23 @@ export default {
 
         },
         checkUrlType() {
-            let regexImg = '(^https?:\/\/.*\.(?:png|jpg))$';
-            let regexVid = 'http(s)?:\/\/www\.youtube\.com\/watch\?v=([^\\\. <>]+)';
-            let imgUrl = new RegExp(regexImg, "i");
-            let vidUrl = new RegExp(regexVid, "i");
-            if (imgUrl.test(this.addNoteTxt)) {
+            let regexImg = /(^https?:\/\/.*\.(?:png|jpg))$/i;
+            let regexVid = /^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+/gm;
+            if (regexImg.test(this.addNoteTxt)) {
                 this.addNoteType = 'img';
                 this.imgPreviewUrl = this.addNoteTxt;
-            } else if(vidUrl.test(this.addNoteTxt)){
+            } else if (regexVid.test(this.addNoteTxt)) {
                 this.addNoteType = 'vid';
             } else {
                 this.addNoteType = 'txt';
                 this.imgPreviewUrl = '';
+            }
+        }
+    },
+    computed: {
+        youtubeEmbedUrl() {
+            if (this.addNoteType === 'vid') {
+                return utils.youtubeEmbedUrl(this.addNoteTxt);
             }
         }
     }
