@@ -48,16 +48,6 @@ h2, h3, h4, h5, h6 {
 
 /* Elements */
 
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: black;
-    z-index: 1;
-}
-
 main {
     height: calc(100vh - 160px);
     box-sizing: border-box;
@@ -102,12 +92,32 @@ input {
     border: none;
     font-size: 1rem;
     color: #fff;
-    z-index: 5;
 }
 
 input:focus {
     outline-width: 1px;
     outline-color: #fcb515;
+}
+
+.input-container {
+    display: flex;
+    position: relative;
+}
+
+.input-container-icon:before {
+    position: absolute;
+    background-size: 1.5em 1.5em;
+    background-position: center;
+    width: 1.5em;
+    height: 1.5em;
+    content: "";
+    margin-right: 1em;
+    top: 12px;
+    left: 1em;
+}
+
+.icon-new-note:before {
+    background-image: url('../img/new-note.svg');
 }
 
 button {
@@ -317,6 +327,10 @@ button:focus {
 
 .btn-edit:before {
     background-image: url('../img/edit.svg');
+}
+
+.btn-pin:before {
+    background-image: url('../img/pin.svg');
 }
 
 /* Helpers */

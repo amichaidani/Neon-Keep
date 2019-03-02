@@ -1,5 +1,5 @@
 
-import { eventBus, EVENT_NOTE_DELETE, EVENT_NOTE_DUPLICATE, EVENT_NOTE_COLOR, EVENT_NOTE_EDIT } from '../../../event-bus.js';
+import { eventBus, EVENT_NOTE_DELETE, EVENT_NOTE_DUPLICATE, EVENT_NOTE_COLOR, EVENT_NOTE_EDIT,EVENT_NOTE_PIN } from '../../../event-bus.js';
 
 export default {
     template: `
@@ -8,6 +8,7 @@ export default {
                         <button class="btn-icon btn-tool btn-duplicate" title="複製する" @click="onTool(tools.duplicate)"></button>
                         <button class="btn-icon btn-tool btn-edit" title="複製する" @click="onTool(tools.edit)"></button>
                         <input v-model="colorInputValue" type="color" @change="onTool(tools.color)">
+                        <button class="btn-icon btn-tool btn-pin" title="複製する" @click="onTool(tools.pin)"></button>
                 </section>`,
 
     props: ['noteid'],
@@ -17,7 +18,8 @@ export default {
                 delete: 'delete',
                 duplicate: 'duplicate',
                 edit: 'edit',
-                color: 'color'
+                color: 'color',
+                pin: 'pin'
             },
             colorInputValue: '#ffffff;'
         }
@@ -32,6 +34,8 @@ export default {
                 eventBus.$emit(EVENT_NOTE_COLOR, { id: this.noteid, color: this.colorInputValue })
             } else if (tool === this.tools.edit) {
                 eventBus.$emit(EVENT_NOTE_EDIT, this.noteid)
+            } else if (tool === this.tools.pin) {
+                eventBus.$emit(EVENT_NOTE_PIN, this.noteid)
             }
         }
     },

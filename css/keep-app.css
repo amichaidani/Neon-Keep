@@ -48,6 +48,7 @@
 
 .notes-add-input {
     display: flex;
+    flex-grow: 1;
 }
 
 .input-title {
@@ -75,7 +76,7 @@
 
 @media (max-width: 768px) {
     .notes-grid-container {
-        column-count: 3;
+        column-count: 2;
     }
 }
 
@@ -119,6 +120,15 @@
 
 .note-card-tools {
     padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+button.btn-icon.btn-tool.btn-pin {
+    flex-grow: 0.5;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .btn-jscolor {

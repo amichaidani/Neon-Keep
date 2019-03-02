@@ -2,7 +2,7 @@ import notesService from './services/notes-service.js'
 import notesList from './cmps/notes-list-cmp.js';
 import notesAdd from './cmps/notes-add-cmp.js';
 
-import { eventBus, EVENT_NOTE_DELETE, EVENT_NOTE_DUPLICATE, EVENT_SEARCH_INPUT, EVENT_NOTE_COLOR } from '../../event-bus.js';
+import { eventBus, EVENT_NOTE_DELETE, EVENT_NOTE_DUPLICATE, EVENT_SEARCH_INPUT, EVENT_NOTE_COLOR, EVENT_NOTE_PIN } from '../../event-bus.js';
 
 
 export default {
@@ -30,6 +30,9 @@ export default {
         },
         onChangeNoteColor(noteId, newColor) {
             notesService.changeNoteColor(noteId, newColor);
+        },
+        onPinNote(noteId) {
+            notesService.pinNote(noteId);
         }
     },
     computed: {
@@ -57,6 +60,10 @@ export default {
 
         eventBus.$on(EVENT_NOTE_COLOR, ev => {
             this.onChangeNoteColor(ev.id, ev.color);
+        });
+        
+        eventBus.$on(EVENT_NOTE_PIN, noteId => {
+            this.onPinNote(noteId);
         });
     },
     destroyed() {
