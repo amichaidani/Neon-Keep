@@ -1,5 +1,5 @@
 import notesService from './services/notes-service.js'
-import notesList from './cmps/notes-list-cmp.js';
+import notesListGroup from './cmps/notes-list-group-cmp.js';
 import notesAdd from './cmps/notes-add-cmp.js';
 
 import { eventBus, EVENT_NOTE_DELETE, EVENT_NOTE_DUPLICATE, EVENT_SEARCH_INPUT, EVENT_NOTE_COLOR, EVENT_NOTE_PIN } from '../../event-bus.js';
@@ -8,10 +8,10 @@ import { eventBus, EVENT_NOTE_DELETE, EVENT_NOTE_DUPLICATE, EVENT_SEARCH_INPUT, 
 export default {
     template: `
                 <section class="keep-app">
-                    <notes-list :notes="notesToShow"></notes-list>
+                    <notes-list-group :notes="notesToShow"></notes-list-group>
                     <notes-add @newNoteAdded="addNewNote"></notes-add>
                 </section>`,
-    components: { notesList, notesAdd },
+    components: { notesListGroup, notesAdd },
     data() {
         return {
             notes: [],
@@ -61,7 +61,7 @@ export default {
         eventBus.$on(EVENT_NOTE_COLOR, ev => {
             this.onChangeNoteColor(ev.id, ev.color);
         });
-        
+
         eventBus.$on(EVENT_NOTE_PIN, noteId => {
             this.onPinNote(noteId);
         });
