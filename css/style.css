@@ -315,6 +315,10 @@ button:focus {
     background-image: url('../img/duplicate.svg');
 }
 
+.btn-edit:before {
+    background-image: url('../img/edit.svg');
+}
+
 /* Helpers */
 
 .flex {

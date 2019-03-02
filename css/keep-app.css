@@ -30,16 +30,16 @@
 }
 
 .add-note-img-preview {
-    padding: 10px 0;
+    padding: 10px 0 0 0;
 }
 
 .add-note-video-preview {
-    padding: 10px;
+    padding: 10px 0 0 0;
 }
 
 .add-note-video-preview iframe {
     width: 100%;
-    max-height: 150px;
+    max-height: 250px;
 }
 
 .add-note-img-preview img {
