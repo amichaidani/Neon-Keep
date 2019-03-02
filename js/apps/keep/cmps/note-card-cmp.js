@@ -24,7 +24,7 @@ export default {
                         
                             </div>
                         </div>
-                        <note-card-tools :noteid="note.id"></note-card-tools>
+                        <note-card-tools :note="note"></note-card-tools>
                 </section>`,
     props: ['note'],
     components: {

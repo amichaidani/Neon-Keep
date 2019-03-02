@@ -61,6 +61,7 @@
 .notes-grid-container {
     column-count: 3;
     column-gap: 1em;
+    margin-bottom: 20px;
 }
 
 /* Masonry on large screens */

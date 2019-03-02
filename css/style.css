@@ -333,6 +333,14 @@ button:focus {
     background-image: url('../img/pin.svg');
 }
 
+.notes-pinned .btn-tool {
+    filter: unset;
+}
+
+.notes-pinned .btn-pin:before {
+    background-image: url('../img/pin-activated.svg')!important;
+}
+
 /* Helpers */
 
 .flex {
