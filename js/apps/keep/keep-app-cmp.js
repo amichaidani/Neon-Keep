@@ -16,8 +16,8 @@ import {
 export default {
     template: `
                 <section class="keep-app">
-                    <notes-list-group :notes="notesToShow"></notes-list-group>
                     <notes-add @newNoteAdded="addNewNote" @noteUpdated="onNoteUpdated"></notes-add>
+                    <notes-list-group :notes="notesToShow"></notes-list-group>
                 </section>`,
     components: { notesListGroup, notesAdd },
     data() {

@@ -33,7 +33,6 @@ body {
     background: #1b1b1b;
     margin: 0;
     color: rgba(255, 255, 255, 0.8);
-    overflow: hidden;
 }
 
 /* Typography */
@@ -50,11 +49,10 @@ h2, h3, h4, h5, h6 {
 /* Elements */
 
 main {
-    height: calc(100vh - 160px);
     box-sizing: border-box;
     margin: 0.5px 0;
     padding: 20px 0;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 header {
@@ -153,7 +151,7 @@ button:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: calc(100vh - 80px);
     width: 100%;
 }
 
