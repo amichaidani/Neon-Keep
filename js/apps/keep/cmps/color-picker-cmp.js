@@ -21,6 +21,7 @@ export default {
         },
         colorChosen(idx) {
             this.$emit('changeColor', this.colorOptions[idx]);
+            this.isColorPickerMenuOpen = false;
         }
     },
     created() {
