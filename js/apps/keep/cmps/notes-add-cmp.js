@@ -13,14 +13,14 @@ export default {
                             v-model="addNoteTitle" @keyup.enter="onNoteAddInputEnter" @focus="addIsFocused = true">
                     </transition>
                     <input type="text"  ref="noteTxtInput" class="notes-add-input input-has-icon glow-input" placeholder="+ (テキスト, youtube, .jpg/.png)" 
-                        v-model="addNoteTxt" @focus="addIsFocused = true" @blur="addIsFocused = false" @input="checkUrlType" @keyup.enter="onNoteAddInputEnter">
+                        v-model="addNoteTxt" @focus="addIsFocused = true" @blur="addIsFocused = false" @input="checkUrlType" @keyup.enter="onNoteAddInputEnter" @keyup.esc="stopEdit">
                     <!-- <button @click="onListClicked">List</button> -->
                     <div v-if="addNoteType === 'list'">
                     LIST
                     </div>
-                    <div class="add-note-img-preview" v-if="addNoteType === 'img'"><img :src="imgPreviewUrl"></div>
+                    <div class="add-note-preview" v-if="addNoteType === 'img'"><img :src="imgPreviewUrl"></div>
 
-                    <div class="add-note-video-preview" v-if="addNoteType === 'vid'"><iframe width="560" height="315" :src="youtubeEmbedUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+                    <div class="add-note-preview" v-if="addNoteType === 'vid'"><iframe width="" height="" :src="youtubeEmbedUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
                             
                 </section>`,
     data() {
@@ -34,23 +34,27 @@ export default {
         }
     },
     methods: {
+        stopEdit() {
+            eventBus.$emit(EVENT_NOTE_EDIT, false)
+            this.editMode = { isOn: false, noteId: null };
+        },
+        resetInputs() {
+            this.addNoteTxt = '';
+            this.addNoteTitle = '';
+            this.addNoteType = 'txt';
+            this.imgPreviewUrl = '';
+        },
         onNoteAddInputEnter() {
             if (!this.editMode.isOn) {
                 if (this.addNoteTxt !== '' || this.addNoteTitle !== '') {
                     this.checkUrlType();
                     this.$emit('newNoteAdded', { type: this.addNoteType, title: this.addNoteTitle, txt: this.addNoteTxt })
                 };
-
             } else {
-                console.log(this.editMode)
-                eventBus.$emit(EVENT_NOTE_UPDATE, { noteId: this.editMode.noteId, type: this.addNoteType, title: this.addNoteTitle, txt: this.addNoteTxt })
-                eventBus.$emit(EVENT_NOTE_EDIT, false)
-                this.editMode = { isOn: false, noteId: null };
+                this.$emit('noteUpdated', { id: this.editMode.noteId, type: this.addNoteType, title: this.addNoteTitle, txt: this.addNoteTxt })
+                this.stopEdit();
             }
-            this.addNoteTxt = '';
-            this.addNoteTitle = '';
-            this.addNoteType = 'txt';
-            this.imgPreviewUrl = '';
+            this.resetInputs();
         },
         onListClicked() {
             if (this.addNoteType !== 'list') {

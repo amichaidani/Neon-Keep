@@ -8,16 +8,18 @@ import {
     EVENT_NOTE_PIN
 } from '../../../event-bus.js';
 
+import colorPicker from '../cmps/color-picker-cmp.js'
+
 export default {
     template: `
                 <section class="note-card-tools">
                         <button class="btn-icon btn-tool btn-trash" title="削除する" @click="onTool(tools.delete)"></button>
                         <button class="btn-icon btn-tool btn-duplicate" title="複製する" @click="onTool(tools.duplicate)"></button>
                         <button class="btn-icon btn-tool" :class="editIcon" title="複製する" @click="onTool(tools.edit)"></button>
-                        <!-- <input v-model="colorInputValue" type="color" @change="onTool(tools.color)"> -->
+                        <color-picker :color="noteColor" @changeColor="onTool(tools.color,$event)"></color-picker>
                         <button class="btn-icon btn-tool btn-pin"  title="複製する" @click="onTool(tools.pin)"></button>
                 </section>`,
-
+    components: { colorPicker },
     props: ['note'],
     data() {
         return {
@@ -29,13 +31,13 @@ export default {
                 pin: 'pin'
             },
             noteId: this.note.id,
-            colorInputValue: '#ffffff;',
+            noteColor: this.note.color,
             thisInEdit: false,
             otherInEdit: false
         }
     },
     methods: {
-        onTool(tool) {
+        onTool(tool, ev) {
             if (tool === this.tools.delete) {
                 eventBus.$emit(EVENT_NOTE_DELETE, this.noteId);
             }
@@ -43,7 +45,7 @@ export default {
                 eventBus.$emit(EVENT_NOTE_DUPLICATE, this.noteId);
             }
             else if (tool === this.tools.color) {
-                eventBus.$emit(EVENT_NOTE_COLOR, { id: this.noteId, color: this.colorInputValue })
+                eventBus.$emit(EVENT_NOTE_COLOR, { id: this.noteId, color: ev })
             }
             else if (tool === this.tools.edit) {
                 if (this.thisInEdit) {

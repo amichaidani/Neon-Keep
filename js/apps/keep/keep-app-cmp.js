@@ -17,7 +17,7 @@ export default {
     template: `
                 <section class="keep-app">
                     <notes-list-group :notes="notesToShow"></notes-list-group>
-                    <notes-add @newNoteAdded="addNewNote"></notes-add>
+                    <notes-add @newNoteAdded="addNewNote" @noteUpdated="onNoteUpdated"></notes-add>
                 </section>`,
     components: { notesListGroup, notesAdd },
     data() {
@@ -36,10 +36,10 @@ export default {
         onNoteDuplicate(noteId) {
             notesService.noteDuplicate(noteId);
         },
-        onNoteUpdated(updatedNote) {
-            notesService.noteUpdate(updatedNote);
+        onNoteUpdated(ev) {
+            notesService.noteUpdate(ev);
         },
-        onNotePin(noteId, newColor) {
+        onNoteChangeColor(noteId, newColor) {
             notesService.noteChangeColor(noteId, newColor);
         },
         onNotePin(noteId) {
@@ -67,10 +67,6 @@ export default {
 
         eventBus.$on(EVENT_NOTE_DUPLICATE, noteId => {
             this.onNoteDuplicate(noteId);
-        });
-
-        eventBus.$on(EVENT_NOTE_UPDATE, ev => {
-            this.onNoteUpdated({ id: ev.noteId, type: ev.type, title: ev.title, txt: ev.txt });
         });
 
         eventBus.$on(EVENT_NOTE_COLOR, ev => {
