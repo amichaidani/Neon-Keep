@@ -6,7 +6,7 @@ export default {
     noteCreate,
     noteDelete,
     noteDuplicate,
-    noteEdit,
+    noteUpdate,
     noteChangeColor,
     notePin
 }
@@ -24,7 +24,6 @@ function noteCreate(type, title, txt, url) {
         timestamp: Date.now(),
         type,
         isPinned: false,
-        isInEdit: false,
         color: DEFAULT_COLOR,
         data: {
             title: (title) ? title : '',
@@ -49,9 +48,11 @@ function noteDuplicate(noteId) {
     return Promise.resolve();
 }
 
-function noteEdit(noteId) {
-    let note = getNoteById(noteId);
-    note.isInEdit = !note.isInEdit
+function noteUpdate(updatedNote) {
+    let note = getNoteById(updatedNote.id)
+    note.type = updatedNote.type;
+    note.data.title = updatedNote.title;
+    note.data.txt = updatedNote.txt;
     return Promise.resolve();
 }
 

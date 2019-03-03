@@ -12,6 +12,7 @@ export default {
     props: ['notes', 'listname', 'addedclass'],
     data() {
         return {
+            isLocked: false
         }
     },
     computed: {

@@ -4,12 +4,12 @@ import notesAdd from './cmps/notes-add-cmp.js';
 
 import {
     eventBus,
+    EVENT_SEARCH_INPUT,
     EVENT_NOTE_DELETE,
     EVENT_NOTE_DUPLICATE,
-    EVENT_SEARCH_INPUT,
+    EVENT_NOTE_UPDATE,
     EVENT_NOTE_COLOR,
-    EVENT_NOTE_PIN,
-    EVENT_NOTE_EDIT
+    EVENT_NOTE_PIN
 } from '../../event-bus.js';
 
 
@@ -23,7 +23,7 @@ export default {
     data() {
         return {
             notes: [],
-            filterTxt: ''
+            filterTxt: '',
         }
     },
     methods: {
@@ -36,8 +36,8 @@ export default {
         onNoteDuplicate(noteId) {
             notesService.noteDuplicate(noteId);
         },
-        onNoteEdit(noteId) {
-            notesService.noteEdit(noteId);
+        onNoteUpdated(updatedNote) {
+            notesService.noteUpdate(updatedNote);
         },
         onNotePin(noteId, newColor) {
             notesService.noteChangeColor(noteId, newColor);
@@ -69,8 +69,8 @@ export default {
             this.onNoteDuplicate(noteId);
         });
 
-        eventBus.$on(EVENT_NOTE_EDIT, noteId => {
-            this.onNoteEdit(noteId);
+        eventBus.$on(EVENT_NOTE_UPDATE, ev => {
+            this.onNoteUpdated({ id: ev.noteId, type: ev.type, title: ev.title, txt: ev.txt });
         });
 
         eventBus.$on(EVENT_NOTE_COLOR, ev => {
@@ -85,7 +85,7 @@ export default {
     destroyed() {
         eventBus.$off(EVENT_NOTE_DELETE);
         eventBus.$off(EVENT_NOTE_DUPLICATE);
-        eventBus.$off(EVENT_NOTE_EDIT);
+        eventBus.$off(EVENT_NOTE_UPDATE);
         eventBus.$off(EVENT_NOTE_COLOR);
         eventBus.$off(EVENT_SEARCH_INPUT);
     },

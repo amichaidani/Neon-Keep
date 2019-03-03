@@ -1,7 +1,8 @@
 import utils from '../../../utils.js'
 import {
     eventBus,
-    EVENT_NOTE_EDIT
+    EVENT_NOTE_EDIT,
+    EVENT_NOTE_UPDATE
 } from '../../../event-bus.js';
 
 export default {
@@ -11,7 +12,7 @@ export default {
                         <input v-if="addIsFocused" type="text" class="notes-add-input input-title glow-input"  placeholder="タイトル" 
                             v-model="addNoteTitle" @keyup.enter="onNoteAddInputEnter" @focus="addIsFocused = true">
                     </transition>
-                    <input type="text" class="notes-add-input input-has-icon glow-input"  placeholder="+ (テキスト, youtube, .jpg/.png)" 
+                    <input type="text"  ref="noteTxtInput" class="notes-add-input input-has-icon glow-input" placeholder="+ (テキスト, youtube, .jpg/.png)" 
                         v-model="addNoteTxt" @focus="addIsFocused = true" @blur="addIsFocused = false" @input="checkUrlType" @keyup.enter="onNoteAddInputEnter">
                     <!-- <button @click="onListClicked">List</button> -->
                     <div v-if="addNoteType === 'list'">
@@ -24,6 +25,7 @@ export default {
                 </section>`,
     data() {
         return {
+            editMode: { isOn: false, noteId: null },
             addNoteTxt: '',
             addNoteTitle: '',
             addNoteType: 'txt',
@@ -33,15 +35,22 @@ export default {
     },
     methods: {
         onNoteAddInputEnter() {
-            if (this.addNoteTxt !== '' || this.addNoteTitle !== '') {
-                this.checkUrlType();
-                this.$emit('newNoteAdded', { type: this.addNoteType, title: this.addNoteTitle, txt: this.addNoteTxt })
-            };
+            if (!this.editMode.isOn) {
+                if (this.addNoteTxt !== '' || this.addNoteTitle !== '') {
+                    this.checkUrlType();
+                    this.$emit('newNoteAdded', { type: this.addNoteType, title: this.addNoteTitle, txt: this.addNoteTxt })
+                };
+
+            } else {
+                console.log(this.editMode)
+                eventBus.$emit(EVENT_NOTE_UPDATE, { noteId: this.editMode.noteId, type: this.addNoteType, title: this.addNoteTitle, txt: this.addNoteTxt })
+                eventBus.$emit(EVENT_NOTE_EDIT, false)
+                this.editMode = { isOn: false, noteId: null };
+            }
             this.addNoteTxt = '';
             this.addNoteTitle = '';
             this.addNoteType = 'txt';
             this.imgPreviewUrl = '';
-
         },
         onListClicked() {
             if (this.addNoteType !== 'list') {
@@ -71,13 +80,35 @@ export default {
         }
     },
     created() {
-        // eventBus.$on(EVENT_NOTE_EDIT, note => {
-        //     this.addNoteTitle = note.data.title;
-        //     this.addNoteTxt = note.data.txt;
-        //     this.addNoteType = note.type;
-        // });
+        eventBus.$on(EVENT_NOTE_EDIT, ev => {
+            if (ev) {
+                if (!ev.isInEdit) {
+                    this.editMode.isOn = false;
+                    this.addNoteTitle = '';
+                    this.addNoteTxt = '';
+                    this.addNoteType = 'txt'
+                    this.editMode.noteId = null;
+                    this.$refs.noteTxtInput.blur();
+                } else {
+                    this.editMode.isOn = true;
+                    this.addNoteTitle = ev.note.data.title;
+                    this.addNoteTxt = ev.note.data.txt;
+                    this.addNoteType = ev.note.type;
+                    this.$refs.noteTxtInput.focus();
+                    this.editMode.noteId = ev.note.id;
+                    this.checkUrlType();
+                }
+            } else {
+                this.editMode.isOn = false;
+                this.addNoteTitle = '';
+                this.addNoteTxt = '';
+                this.addNoteType = 'txt'
+                this.editMode.noteId = null;
+                this.$refs.noteTxtInput.blur();
+            }
+        });
     },
     destroyed() {
-        // eventBus.$off(EVENT_NOTE_EDIT);
+        eventBus.$off(EVENT_NOTE_EDIT);
     },
 }

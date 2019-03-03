@@ -15,7 +15,7 @@ export default {
                             <iframe :src="youtubeEmbedUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                             </div>
 
-                            <div class="note-card-text" v-if="note.data.title !== '' || note-type === 'txt'"> 
+                            <div class="note-card-text" v-if="note.data.title !== '' || note.type === 'txt'"> 
                             <h4 v-if="note.data.title !== ''">{{note.data.title}}</h4>    
                             <div  v-if="note.type === 'txt'">{{note.data.txt}}</div>
                             </div>
