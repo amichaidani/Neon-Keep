@@ -330,8 +330,21 @@ button:focus {
     background-image: url('../img/edit.svg');
 }
 
+.btn-tool.btn-edit-activated {
+    filter: unset;
+}
+
+.btn-edit-activated:before {
+    background-image: url('../img/edit-activated.svg');
+}
+
+.btn-edit-activated:before {
+    background-image: url('../img/edit-activated.svg');
+}
+
 .btn-pin:before {
     background-image: url('../img/pin.svg');
+    transform: scaleX(-1);
 }
 
 .notes-pinned .btn-tool {
@@ -340,6 +353,7 @@ button:focus {
 
 .notes-pinned .btn-pin:before {
     background-image: url('../img/pin-activated.svg')!important;
+    transform: scaleX(-1);
 }
 
 /* Helpers */

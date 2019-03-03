@@ -1,4 +1,9 @@
 import utils from '../../../utils.js'
+import {
+    eventBus,
+    EVENT_NOTE_EDIT
+} from '../../../event-bus.js';
+
 export default {
     template: `
                 <section class="notes-add">
@@ -8,7 +13,10 @@ export default {
                     </transition>
                     <input type="text" class="notes-add-input input-has-icon glow-input"  placeholder="+ (テキスト, youtube, .jpg/.png)" 
                         v-model="addNoteTxt" @focus="addIsFocused = true" @blur="addIsFocused = false" @input="checkUrlType" @keyup.enter="onNoteAddInputEnter">
-
+                    <!-- <button @click="onListClicked">List</button> -->
+                    <div v-if="addNoteType === 'list'">
+                    LIST
+                    </div>
                     <div class="add-note-img-preview" v-if="addNoteType === 'img'"><img :src="imgPreviewUrl"></div>
 
                     <div class="add-note-video-preview" v-if="addNoteType === 'vid'"><iframe width="560" height="315" :src="youtubeEmbedUrl" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
@@ -26,6 +34,7 @@ export default {
     methods: {
         onNoteAddInputEnter() {
             if (this.addNoteTxt !== '' || this.addNoteTitle !== '') {
+                this.checkUrlType();
                 this.$emit('newNoteAdded', { type: this.addNoteType, title: this.addNoteTitle, txt: this.addNoteTxt })
             };
             this.addNoteTxt = '';
@@ -33,6 +42,12 @@ export default {
             this.addNoteType = 'txt';
             this.imgPreviewUrl = '';
 
+        },
+        onListClicked() {
+            if (this.addNoteType !== 'list') {
+                this.addNoteType = 'list';
+            }
+            else { this.addNoteType = 'txt'; }
         },
         checkUrlType() {
             let regexImg = /(^https?:\/\/.*\.(?:png|jpg))$/i;
@@ -54,5 +69,15 @@ export default {
                 return utils.youtubeEmbedUrl(this.addNoteTxt);
             }
         }
-    }
+    },
+    created() {
+        // eventBus.$on(EVENT_NOTE_EDIT, note => {
+        //     this.addNoteTitle = note.data.title;
+        //     this.addNoteTxt = note.data.txt;
+        //     this.addNoteType = note.type;
+        // });
+    },
+    destroyed() {
+        // eventBus.$off(EVENT_NOTE_EDIT);
+    },
 }

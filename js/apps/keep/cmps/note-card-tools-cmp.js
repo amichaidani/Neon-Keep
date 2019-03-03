@@ -1,13 +1,20 @@
 
-import { eventBus, EVENT_NOTE_DELETE, EVENT_NOTE_DUPLICATE, EVENT_NOTE_COLOR, EVENT_NOTE_EDIT, EVENT_NOTE_PIN } from '../../../event-bus.js';
+import {
+    eventBus,
+    EVENT_NOTE_DELETE,
+    EVENT_NOTE_DUPLICATE,
+    EVENT_NOTE_COLOR,
+    EVENT_NOTE_EDIT,
+    EVENT_NOTE_PIN
+} from '../../../event-bus.js';
 
 export default {
     template: `
                 <section class="note-card-tools">
                         <button class="btn-icon btn-tool btn-trash" title="削除する" @click="onTool(tools.delete)"></button>
                         <button class="btn-icon btn-tool btn-duplicate" title="複製する" @click="onTool(tools.duplicate)"></button>
-                        <button class="btn-icon btn-tool btn-edit" title="複製する" @click="onTool(tools.edit)"></button>
-                        <input v-model="colorInputValue" type="color" @change="onTool(tools.color)">
+                        <button class="btn-icon btn-tool" :class="editIcon" title="複製する" @click="onTool(tools.edit)"></button>
+                        <!-- <input v-model="colorInputValue" type="color" @change="onTool(tools.color)"> -->
                         <button class="btn-icon btn-tool btn-pin"  title="複製する" @click="onTool(tools.pin)"></button>
                 </section>`,
 
@@ -38,6 +45,11 @@ export default {
             } else if (tool === this.tools.pin) {
                 eventBus.$emit(EVENT_NOTE_PIN, this.noteid)
             }
+        }
+    },
+    computed: {
+        editIcon() {
+            return { 'btn-edit': !this.note.isInEdit, 'btn-edit-activated': this.note.isInEdit }
         }
     }
 }

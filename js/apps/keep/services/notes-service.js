@@ -3,11 +3,12 @@ import utils from '../../../utils.js'
 export default {
     gNotes,
     getNotes,
-    createNote,
-    deleteNote,
-    duplicateNote,
-    changeNoteColor,
-    pinNote
+    noteCreate,
+    noteDelete,
+    noteDuplicate,
+    noteEdit,
+    noteChangeColor,
+    notePin
 }
 
 var gNotes = [];
@@ -17,12 +18,13 @@ function getNotes() {
     return Promise.resolve(gNotes)
 }
 
-function createNote(type, title, txt, url) {
+function noteCreate(type, title, txt, url) {
     let newNote = {
         id: utils.makeid(),
         timestamp: Date.now(),
         type,
         isPinned: false,
+        isInEdit: false,
         color: DEFAULT_COLOR,
         data: {
             title: (title) ? title : '',
@@ -35,33 +37,47 @@ function createNote(type, title, txt, url) {
     return Promise.resolve(newNote);
 }
 
-function deleteNote(noteId) {
-    let noteIdx = gNotes.findIndex(note => note.id === noteId);
+function noteDelete(noteId) {
+    let noteIdx = getNoteIdxById(noteId);
     gNotes.splice(noteIdx, 1);
-
     return Promise.resolve();
 }
 
-function duplicateNote(noteId) {
-    let note = gNotes.find(note => note.id === noteId);
-    createNote(note.type, note.data.title, note.data.txt);
+function noteDuplicate(noteId) {
+    let note = getNoteById(noteId);
+    noteCreate(note.type, note.data.title, note.data.txt);
     return Promise.resolve();
 }
 
-function changeNoteColor(noteId, newColor) {
-    let note = gNotes.find(note => note.id === noteId);
+function noteEdit(noteId) {
+    let note = getNoteById(noteId);
+    note.isInEdit = !note.isInEdit
+    return Promise.resolve();
+}
+
+function noteChangeColor(noteId, newColor) {
+    let note = getNoteById(noteId);
     note.color = newColor;
     return Promise.resolve();
 }
 
-function pinNote(noteId) {
-    let note = gNotes.find(note => note.id === noteId);
+function notePin(noteId) {
+    let note = getNoteById(noteId);
     note.isPinned = !note.isPinned;
     return Promise.resolve();
 }
 
+function getNoteById(noteId) {
+    let note = gNotes.find(note => note.id === noteId);
+    return note;
+}
+function getNoteIdxById(noteId) {
+    let note = gNotes.findIndex(note => note.id === noteId);
+    return note;
+}
+
 // Create dummy data
-createNote('img', '', 'https://s3.amazonaws.com/factmag-images/wp-content/uploads/2016/06/fractalfantasy2-6.24.2016.jpg')
-createNote('txt', 'To Do:', 'Finish CRUD / Pin / Color picker')
-createNote('vid', 'Wow :o', 'https://www.youtube.com/watch?v=a27te71Qh70')
-createNote('img', '', 'https://cdn-images-1.medium.com/max/1600/1*HP8l7LMMt7Sh5UoO1T-yLQ.png')
+noteCreate('img', '', 'https://s3.amazonaws.com/factmag-images/wp-content/uploads/2016/06/fractalfantasy2-6.24.2016.jpg')
+noteCreate('txt', 'To Do:', 'Finish CRUD / LIST / Color picker')
+noteCreate('vid', 'Wow :o', 'https://www.youtube.com/watch?v=a27te71Qh70')
+noteCreate('img', '', 'https://cdn-images-1.medium.com/max/1600/1*HP8l7LMMt7Sh5UoO1T-yLQ.png')

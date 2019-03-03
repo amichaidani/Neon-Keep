@@ -2,7 +2,15 @@ import notesService from './services/notes-service.js'
 import notesListGroup from './cmps/notes-list-group-cmp.js';
 import notesAdd from './cmps/notes-add-cmp.js';
 
-import { eventBus, EVENT_NOTE_DELETE, EVENT_NOTE_DUPLICATE, EVENT_SEARCH_INPUT, EVENT_NOTE_COLOR, EVENT_NOTE_PIN } from '../../event-bus.js';
+import {
+    eventBus,
+    EVENT_NOTE_DELETE,
+    EVENT_NOTE_DUPLICATE,
+    EVENT_SEARCH_INPUT,
+    EVENT_NOTE_COLOR,
+    EVENT_NOTE_PIN,
+    EVENT_NOTE_EDIT
+} from '../../event-bus.js';
 
 
 export default {
@@ -20,19 +28,22 @@ export default {
     },
     methods: {
         addNewNote(ev) {
-            notesService.createNote(ev.type, ev.title, ev.txt);
+            notesService.noteCreate(ev.type, ev.title, ev.txt);
         },
-        onDeleteNote(noteId) {
-            notesService.deleteNote(noteId);
+        onNoteDelete(noteId) {
+            notesService.noteDelete(noteId);
         },
-        onDuplicateNote(noteId) {
-            notesService.duplicateNote(noteId);
+        onNoteDuplicate(noteId) {
+            notesService.noteDuplicate(noteId);
         },
-        onChangeNoteColor(noteId, newColor) {
-            notesService.changeNoteColor(noteId, newColor);
+        onNoteEdit(noteId) {
+            notesService.noteEdit(noteId);
         },
-        onPinNote(noteId) {
-            notesService.pinNote(noteId);
+        onNotePin(noteId, newColor) {
+            notesService.noteChangeColor(noteId, newColor);
+        },
+        onNotePin(noteId) {
+            notesService.notePin(noteId);
         }
     },
     computed: {
@@ -51,24 +62,30 @@ export default {
         });
 
         eventBus.$on(EVENT_NOTE_DELETE, noteId => {
-            this.onDeleteNote(noteId);
+            this.onNoteDelete(noteId);
         });
 
         eventBus.$on(EVENT_NOTE_DUPLICATE, noteId => {
-            this.onDuplicateNote(noteId);
+            this.onNoteDuplicate(noteId);
+        });
+
+        eventBus.$on(EVENT_NOTE_EDIT, noteId => {
+            this.onNoteEdit(noteId);
         });
 
         eventBus.$on(EVENT_NOTE_COLOR, ev => {
-            this.onChangeNoteColor(ev.id, ev.color);
+            this.onNoteChangeColor(ev.id, ev.color);
         });
 
         eventBus.$on(EVENT_NOTE_PIN, noteId => {
-            this.onPinNote(noteId);
+            this.onNotePin(noteId);
         });
+
     },
     destroyed() {
         eventBus.$off(EVENT_NOTE_DELETE);
         eventBus.$off(EVENT_NOTE_DUPLICATE);
+        eventBus.$off(EVENT_NOTE_EDIT);
         eventBus.$off(EVENT_NOTE_COLOR);
         eventBus.$off(EVENT_SEARCH_INPUT);
     },
