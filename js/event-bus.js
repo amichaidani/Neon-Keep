@@ -5,4 +5,7 @@ export const EVENT_NOTE_EDIT = 'note-edit';
 export const EVENT_NOTE_UPDATE = 'note-update';
 export const EVENT_NOTE_COLOR = 'note-color';
 export const EVENT_NOTE_PIN = 'note-pin';
+
+export const EVENT_MAIL_STAR = 'mail-star';
+
 export const EVENT_SEARCH_INPUT = 'search-input';

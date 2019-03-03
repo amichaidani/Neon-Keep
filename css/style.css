@@ -1,4 +1,5 @@
 @import url('keep-app.css');
+@import url('mail-app.css');
 @import url('nav.css');
 /* Using a url */
 
@@ -33,6 +34,7 @@ body {
     background: #1b1b1b;
     margin: 0;
     color: rgba(255, 255, 255, 0.8);
+    overflow-y: scroll;
 }
 
 /* Typography */
@@ -75,11 +77,11 @@ a {
     color: inherit;
 }
 
-.router-link-active {
+nav .router-link-active {
     background-color: #f873a3;
 }
 
-.router-link-active .btn-icon {
+nav .router-link-active .btn-icon {
     filter: invert(0.9);
 }
 
@@ -117,6 +119,10 @@ input:focus {
 
 .icon-new-note:before {
     background-image: url('../img/new-note.svg');
+}
+
+p {
+    margin: 0;
 }
 
 button {
@@ -229,17 +235,31 @@ button:focus {
     display: none;
 }
 
-@media(max-width:420px) {
-    .page-title {
-        display: none;
-    }
-}
-
 .search-container {
     width: 100%;
     background: #272727;
     border-color: #fcb515;
     margin-right: 4px;
+}
+
+@media(max-width:768px) {
+    .page-title {
+        display: none;
+    }
+    .search-container {
+        position: fixed;
+        top: 80px;
+        transform: none;
+        margin: 0;
+        left: 0;
+        padding: 0;
+    }
+    .search-container li {
+        transform: none;
+    }
+    .search-container input {
+        background: #333;
+    }
 }
 
 .search-container:hover {
@@ -318,6 +338,26 @@ button:focus {
 
 .btn-trash:before {
     background-image: url('../img/trash.svg');
+}
+
+.btn-pen:before {
+    background-image: url('../img/pen.svg');
+}
+
+.btn-inbox:before {
+    background-image: url('../img/inbox.svg');
+}
+
+.btn-sent:before {
+    background-image: url('../img/sent.svg');
+}
+
+.btn-star:before {
+    background-image: url('../img/star.svg');
+}
+
+.btn-star-activated:before {
+    background-image: url('../img/star-activated.svg');
 }
 
 .btn-duplicate:before {
